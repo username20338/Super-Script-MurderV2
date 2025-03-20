@@ -1,0 +1,223 @@
+-- Carregar a RedzLib V5
+local redzlib = loadstring(game:HttpGet("https://raw.githubusercontent.com/REDzHUB/RedzLibV5/main/Source.Lua"))()
+
+-- Criar a Janela Principal do Hub
+local Window = redzlib:MakeWindow({
+    Title = "KitsuneHub",
+    SubTitle = "by Carlos",
+    SaveFolder = "blox_fruits_hub.lua"
+})
+
+local player = game.Players.LocalPlayer
+local TeleportService = game:GetService("TeleportService")
+
+-------------------------------------------------
+-- TAB 1: Auto Farm com Ultra Fast Attack
+-------------------------------------------------
+local Tab1 = Window:MakeTab({"Auto Farm", "sword"})
+
+local autoFarmEnabled = false
+local farmTarget = nil
+local farmDistance = 50
+local clickDelay = 0.01
+
+local function ultraFastClickAttack(target)
+    if target …
+loadstring(game:HttpGet("https://raw.githubusercontent.com/username20338/CarHub/refs/heads/main/Car%2520Hub%2520X.lua"))()
+https://github.com/tbao143/Library-ui/blob/main/Redz%20hub.md
+-- Carregar a Redz Hub UI Library
+local redzlib = loadstring(game:HttpGet("https://raw.githubusercontent.com/tbao143/Library-ui/refs/heads/main/Redzhub.lua"))()
+
+-- Criar a janela principal
+local Window = redzlib:MakeWindow({
+    Title = "Super Script Murder",
+    SubTitle = "by Carlos",
+    SaveFolder = "SSM_Config"
+})
+
+-- Criar abas separadas para cada funcionalidade
+local ESP_Tab = Window:MakeTab({"ESP Supremo", "rbxassetid://ID_DA_IMAGEM"})
+local AutoFarm_Tab = Window:MakeTab({"Auto Farm", "rbxassetid://ID_DA_IMAGEM"})
+local GodMode_Tab = Window:MakeTab({"GodMode", "rbxassetid://ID_DA_IMAGEM"})
+local XRay_Tab = Window:MakeTab({"X-Ray", "rbxassetid://ID_DA_IMAGEM"})
+local Antiban_Tab = Window:MakeTab({"Antiban PRO", "rbxassetid://ID_DA_IMAGEM"})
+local Ext…
+loadstring(game:HttpGet("https://raw.githubusercontent.com/username20338/test/refs/heads/main/XhubBlox"))()
+https://raw.githubusercontent.com/tbao143/Library-ui/refs/heads/main/Redzhub.lua
+-- Carrega a library
+local redzlib = loadstring(game:HttpGet("https://raw.githubusercontent.com/tbao143/Library-ui/refs/heads/main/Redzhubui"))()
+
+-- Cria a janela principal
+local Window = redzlib:MakeWindow({
+    Title = "Super Script Murder",
+    SubTitle = "Hacks Visuais",
+    SaveFolder = "SuperScriptMurder"
+})
+
+-- Criando Abas no Hub
+local ESPTab = Window:MakeTab({"ESP Supremo", "Visual"})
+local MovementTab = Window:MakeTab({"Movimentação", "Hacks"})
+
+-- Variáveis de controle
+local ESPEnabled = false
+local FlyEnabled = false
+local NoclipEnabled = false
+local FlySpeed = 50
+local FlyVelocity = Vector3.new(0, 0, 0)
+
+-- * ESP SUPREMO *
+local function CreateESP(Player)
+    if not ESPEnabled or Player == game.Players.LocalPlayer then return end
+    
+    local Character = Player.Character
+    if not Character then return end
+    local HumanoidRootPart = Character:FindFirstChild("HumanoidRootPart")
+    if not HumanoidRootPart then return end
+
+    if Character:FindFirstChild("ESP") then return end
+
+    local ESPGui = Instance.new("BillboardGui")
+    ESPGui.Name = "ESP"
+    ESPGui.Adornee = HumanoidRootPart
+    ESPGui.Size = UDim2.new(4, 0, 6, 0)
+    ESPGui.StudsOffset = Vector3.new(0, 2, 0)
+    ESPGui.AlwaysOnTop = true
+
+    local Box = Instance.new("Frame")
+    Box.Parent = ESPGui
+    Box.Size = UDim2.new(1, 0, 1, 0)
+    Box.Position = UDim2.new(0, 0, 0, 0)
+    Box.BackgroundTransparency = 1
+    Box.BorderSizePixel = 2
+    Box.BorderColor3 = Color3.fromRGB(255, 0, 0)
+
+    local NameTag = Instance.new("TextLabel")
+    NameTag.Parent = ESPGui
+    NameTag.Size = UDim2.new(1, 0, 0.2, 0)
+    NameTag.Position = UDim2.new(0, 0, -0.2, 0)
+    NameTag.BackgroundTransparency = 1
+    NameTag.Text = Player.Name
+    NameTag.TextColor3 = Color3.fromRGB(255, 255, 255)
+    NameTag.TextScaled = true
+    NameTag.Font = Enum.Font.SourceSansBold
+
+    ESPGui.Parent = HumanoidRootPart
+end
+
+local function UpdateESP()
+    for _, Player in ipairs(game.Players:GetPlayers()) do
+        if Player.Character and not Player.Character:FindFirstChild("ESP") then
+            CreateESP(Player)
+        end
+    end
+end
+
+game.Players.PlayerAdded:Connect(function(Player)
+    Player.CharacterAdded:Connect(function()
+        task.wait(1)
+        CreateESP(Player)
+    end)
+end)
+
+ESPTab:AddToggle({
+    Name = "Ativar ESP",
+    Description = "Exibir caixas nos jogadores",
+    Default = false,
+    Callback = function(State)
+        ESPEnabled = State
+        if State then
+            while ESPEnabled do
+                UpdateESP()
+                task.wait(1)
+            end
+        else
+            for _, Player in ipairs(game.Players:GetPlayers()) do
+                if Player.Character then
+                    local ESP = Player.Character:FindFirstChild("ESP")
+                    if ESP then
+                        ESP:Destroy()
+                    end
+                end
+            end
+        end
+    end
+})
+
+-- * FLY HACK *
+local function Fly()
+    local Character = game.Players.LocalPlayer.Character
+    if not Character then return end
+
+    local HumanoidRootPart = Character:FindFirstChild("HumanoidRootPart")
+    if not HumanoidRootPart then return end
+
+    while FlyEnabled do
+        HumanoidRootPart.Velocity = FlyVelocity
+        task.wait()
+    end
+end
+
+MovementTab:AddToggle({
+    Name = "Ativar Fly",
+    Description = "Permite voar livremente",
+    Default = false,
+    Callback = function(State)
+        FlyEnabled = State
+        if FlyEnabled then
+            FlyVelocity = Vector3.new(0, FlySpeed, 0)
+            Fly()
+        else
+            FlyVelocity = Vector3.new(0, 0, 0)
+        end
+    end
+})
+
+MovementTab:AddSlider({
+    Name = "Velocidade do Fly",
+    Min = 10,
+    Max = 200,
+    Increase = 5,
+    Default = 50,
+    Callback = function(Value)
+        FlySpeed = Value
+        if FlyEnabled then
+            FlyVelocity = Vector3.new(0, FlySpeed, 0)
+        end
+    end
+})
+
+-- * NOCLIP HACK *
+local function Noclip()
+    while NoclipEnabled do
+        local Character = game.Players.LocalPlayer.Character
+        if Character then
+            for _, Part in pairs(Character:GetChildren()) do
+                if Part:IsA("BasePart") then
+                    Part.CanCollide = false
+                end
+            end
+        end
+        task.wait()
+    end
+end
+
+MovementTab:AddToggle({
+    Name = "Ativar Noclip",
+    Description = "Atravessar paredes",
+    Default = false,
+    Callback = function(State)
+        NoclipEnabled = State
+        if NoclipEnabled then
+            Noclip()
+        else
+            local Character = game.Players.LocalPlayer.Character
+            if Character then
+                for _, Part in pairs(Character:GetChildren()) do
+                    if Part:IsA("BasePart") then
+                        Part.CanCollide = true
+                    end
+                end
+            end
+        end
+    end
+})
